@@ -145,6 +145,13 @@ def execute_code():
         "vm": {"time": vm_time, "memory": vm_memory, "cpu": vm_cpu, "cost": vm_cost, "co2": vm_co2},
         "docker": {"time": docker_time, "memory": docker_memory, "cpu": docker_cpu, "cost": docker_cost, "co2": docker_co2}
     })
+# Mela irukka code...
+
+@app.route('/initdb')
+def init_db():
+    with app.app_context():
+        db.create_all()
+    return "Database tables created successfully! 🚀 You can now use the app."
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
