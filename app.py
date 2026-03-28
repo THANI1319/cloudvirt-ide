@@ -155,3 +155,45 @@ def init_db():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+
+    @app.app.route('/api/analyze-file', methods=['POST'])
+def analyze_file():
+    data = request.json
+    filename = data.get('fileName')
+    filesize_kb = data.get('fileSize') # In KB
+    file_type = data.get('fileType')
+
+    # Simulation Logic for File Workload
+    # Docker uses Layered FS (Fast), VM uses Block Storage (Slow boot)
+    
+    vm_boot_time = 25.5  # VM needs to mount disk and boot OS
+    docker_boot_time = 0.4 # Container just starts
+    
+    # Transfer speed simulation (MB/s)
+    vm_speed = 45 
+    docker_speed = 95 # Native speed
+    
+    transfer_time_docker = (filesize_kb / 1024) / docker_speed
+    transfer_time_vm = (filesize_kb / 1024) / vm_speed
+    
+    # Storage Overhead
+    vm_overhead = 20 * 1024 # 20GB OS Image
+    docker_overhead = 0.1 * 1024 # 100MB Base Image
+
+    return jsonify({
+        "status": "success",
+        "analysis": {
+            "fileName": filename,
+            "type": file_type,
+            "vm": {
+                "totalTime": round(vm_boot_time + transfer_time_vm, 2),
+                "storage": f"{round((filesize_kb + vm_overhead)/1024, 2)} GB",
+                "co2": round((vm_boot_time + transfer_time_vm) * 1.2, 2)
+            },
+            "docker": {
+                "totalTime": round(docker_boot_time + transfer_time_docker, 2),
+                "storage": f"{round((filesize_kb + docker_overhead)/1024, 2)} MB",
+                "co2": round((docker_boot_time + transfer_time_docker) * 0.2, 2)
+            }
+        }
+    })

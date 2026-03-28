@@ -280,3 +280,44 @@ if(window.location.pathname === '/history') {
         }
     }
 }
+
+async function analyzeFile() {
+    const fileInput = document.getElementById('fileInput');
+    if (fileInput.files.length === 0) {
+        Swal.fire('Error', 'Please select a file first!', 'error');
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const payload = {
+        fileName: file.name,
+        fileSize: file.size / 1024, // KB
+        fileType: file.type || 'Unknown'
+    };
+
+    // Professional Loading
+    Swal.fire({ title: 'Analyzing Workload...', didOpen: () => { Swal.showLoading() } });
+
+    const response = await fetch('/api/analyze-file', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+    Swal.close();
+
+    // Result Display
+    Swal.fire({
+        title: `Analysis: ${data.analysis.fileName}`,
+        html: `
+            <div style="text-align: left;">
+                <p><b>Docker:</b> ${data.analysis.docker.totalTime}s | Storage: ${data.analysis.docker.storage}</p>
+                <p><b>Virtual Machine:</b> ${data.analysis.vm.totalTime}s | Storage: ${data.analysis.vm.storage}</p>
+                <hr>
+                <p class="text-success">Docker is <b>${Math.round(data.analysis.vm.totalTime / data.analysis.docker.totalTime)}x</b> faster for this file!</p>
+            </div>
+        `,
+        icon: 'success'
+    });
+}
