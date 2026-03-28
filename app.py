@@ -45,20 +45,18 @@ def about(): return render_template('about.html')
 @app.route('/history')
 def history(): return render_template('history.html')
 
-# HISTORY ROUTE (Private to specific user)
+# HISTORY ROUTE
 @app.route('/api/history', methods=['GET'])
 def get_history():
     username = request.args.get('username')
-    
     if username:
         records = ExecutionHistory.query.filter_by(username=username).order_by(ExecutionHistory.timestamp.desc()).limit(20).all()
     else:
         records = []
-        
     data = [{"id": r.id, "time": r.timestamp.strftime("%Y-%m-%d %H:%M:%S"), "lang": r.language, "username": r.username, "winner": r.winner, "exec": r.exec_time, "users": r.users} for r in records]
     return jsonify(data)
 
-# EXECUTE ROUTE (Missing aagirunthuchu, ippo add panniyachu!)
+# EXECUTE ROUTE
 @app.route('/api/execute', methods=['POST'])
 def execute_code():
     data = request.get_json()
@@ -145,40 +143,25 @@ def execute_code():
         "vm": {"time": vm_time, "memory": vm_memory, "cpu": vm_cpu, "cost": vm_cost, "co2": vm_co2},
         "docker": {"time": docker_time, "memory": docker_memory, "cpu": docker_cpu, "cost": docker_cost, "co2": docker_co2}
     })
-# Mela irukka code...
 
-@app.route('/initdb')
-def init_db():
-    with app.app_context():
-        db.create_all()
-    return "Database tables created successfully! 🚀 You can now use the app."
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
-
-    @app.app.route('/api/analyze-file', methods=['POST'])
+# FILE ANALYSIS ROUTE (Corrected position)
+@app.route('/api/analyze-file', methods=['POST'])
 def analyze_file():
     data = request.json
     filename = data.get('fileName')
     filesize_kb = data.get('fileSize') # In KB
     file_type = data.get('fileType')
 
-    # Simulation Logic for File Workload
-    # Docker uses Layered FS (Fast), VM uses Block Storage (Slow boot)
-    
-    vm_boot_time = 25.5  # VM needs to mount disk and boot OS
-    docker_boot_time = 0.4 # Container just starts
-    
-    # Transfer speed simulation (MB/s)
+    vm_boot_time = 25.5
+    docker_boot_time = 0.4
     vm_speed = 45 
-    docker_speed = 95 # Native speed
+    docker_speed = 95 
     
     transfer_time_docker = (filesize_kb / 1024) / docker_speed
     transfer_time_vm = (filesize_kb / 1024) / vm_speed
     
-    # Storage Overhead
-    vm_overhead = 20 * 1024 # 20GB OS Image
-    docker_overhead = 0.1 * 1024 # 100MB Base Image
+    vm_overhead = 20 * 1024 
+    docker_overhead = 0.1 * 1024 
 
     return jsonify({
         "status": "success",
@@ -197,3 +180,12 @@ def analyze_file():
             }
         }
     })
+
+@app.route('/initdb')
+def init_db():
+    with app.app_context():
+        db.create_all()
+    return "Database tables created successfully! 🚀 You can now use the app."
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
