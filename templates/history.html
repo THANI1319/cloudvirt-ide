@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5" style="padding-top: 120px !important;">
+    <div class="container" data-aos="fade-up">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-light"><i class="fas fa-database text-warning"></i> Workload Execution History</h2>
+            <p class="text-muted">Live database logs of all executed cloud tests.</p>
+        </div>
+        <div class="glass-card p-4 shadow-lg">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover table-bordered text-center align-middle">
+                    <thead>
+                        <tr class="text-info">
+                            <th>Log ID</th><th>Timestamp</th><th>Language</th><th>Simulated Users</th><th>Execution Time</th><th>Winner Platform</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTableBody">
+                        <tr><td colspan="6" class="text-muted">Loading database records...</td></tr>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

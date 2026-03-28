@@ -1,0 +1,382 @@
+/* Core Styling & Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;500;700;800&display=swap');
+
+html {
+    scroll-behavior: smooth; /* IMPORTANT for massive single page */
+    scroll-padding-top: 80px;
+}
+
+body {
+    background-color: #0d1117;
+    font-family: 'Outfit', sans-serif;
+    color: #e6edf3;
+    overflow-x: hidden;
+}
+
+#particles-js {
+    position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1;
+}
+
+/* Common Background Fades */
+.bg-dark-fade { background: rgba(13, 17, 23, 0.95); }
+.bg-black-fade { background: rgba(0, 0, 0, 0.95); }
+.bg-light-fade { background: rgba(248, 249, 250, 0.03); }
+
+/* MASSIVE GLASS NAVBAR (NEW CSS) */
+.glass-nav {
+    background: rgba(13, 17, 23, 0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.8);
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #58a6ff !important;
+}
+
+.nav-link { font-weight: 500; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
+.nav-link.active {
+    border-bottom: 2px solid #58a6ff;
+    color: #58a6ff !important;
+}
+
+/* NEON HEADINGS */
+.neon-heading {
+    color: #58a6ff;
+    text-shadow: 0 0 20px rgba(88, 166, 255, 0.8), 0 0 40px rgba(88, 166, 255, 0.6);
+    font-weight: 800;
+}
+.neon-heading-sm {
+    font-size: 2.5rem;
+    color: #e6edf3;
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.6);
+    font-weight: 700;
+}
+
+/* HOME & WORKSPACE */
+.hero-section {
+    min-height: 100vh;
+    padding-top: 100px; /* Offset for navbar */
+}
+
+.hero-btn { transition: 0.4s; }
+.hero-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(13, 202, 240, 0.4) !important; background-color: #0dcaf0; color: black; }
+
+.main-workspace { padding-bottom: 100px; }
+
+/* IDE Container */
+.editor-container {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+    background: #161b22;
+}
+.editor-header {
+    background: #010409;
+    border-bottom: 1px solid #30363d;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+}
+.execute-btn {
+    background: linear-gradient(90deg, #238636, #2ea043);
+    border: none;
+    transition: 0.3s;
+}
+.execute-btn:hover {
+    transform: scale(1.05); box-shadow: 0 0 15px rgba(46, 160, 67, 0.6);
+}
+
+/* Terminal */
+.terminal-container {
+    border-radius: 12px; overflow: hidden; border: 1px solid #30363d; background: #010409;
+}
+.terminal-header { background: #161b22; border-bottom: 1px solid #30363d; font-family: 'Fira Code'; }
+#terminalOutput {
+    height: 150px; overflow-y: auto; font-family: 'Fira Code', monospace; font-size: 13px; color: #3fb950;
+}
+
+/* DETAILED ANALYTICS GRID */
+.glass-panel {
+    background: rgba(22, 27, 34, 0.5);
+    border-radius: 20px; border: 1px dashed #30363d;
+}
+.glass-card {
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px); border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: 0.4s ease;
+}
+
+.vm-detailed-card { border-top: 5px solid #0dcaf0; }
+.docker-detailed-card { border-top: 5px solid #2ecc71; border-color: rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1) rgba(46, 204, 113, 0.8) !important; border-width: 5px 1px 1px 1px !important;}
+.docker-detailed-card h4, .docker-detailed-card strong { text-shadow: 0 0 10px rgba(46, 204, 113, 0.8); }
+
+.glass-card:hover { transform: translateY(-8px); border-color: #58a6ff !important; }
+
+.metric-list li { border-bottom: 1px solid rgba(255,255,255,0.03) !important; }
+.metric-list strong { font-size: 1.1rem; }
+
+/* Charts */
+.chart-card { min-height: 250px; }
+
+/* Winner Alert Preserved */
+.custom-alert {
+    background: linear-gradient(135deg, rgba(35, 134, 54, 0.2), rgba(13, 17, 23, 0.9));
+    border: 1px solid #2ea043 !important; border-radius: 15px;
+}
+
+/* 3D FLIPCARDS SECTION (NEW CSS) */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 280px; /* Detailed Definition Input */
+    perspective: 1000px;
+    border-radius: 15px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card:hover .flip-card-inner {
+    border: 2px solid rgba(88, 166, 255, 0.8);
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.6);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.flip-card-front {
+    background: #161b22;
+    color: #e6edf3;
+}
+.flip-card-back {
+    background: #0d1117;
+    color: #e6edf3;
+    transform: rotateY(180deg);
+}
+.flip-card h4 { font-weight: 700; text-shadow: 0 0 10px rgba(88, 166, 255, 0.6); }
+
+/* FOOTER (NEW CSS) */
+.footer { border-top: 1px solid rgba(255,255,255,0.05); }
+.blur-footer { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px); }
+
+/* MISC ANIMATIONS */
+.pulse-anim { animation: pulse 2s infinite; color: #58a6ff !important;}
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 20px #58a6ff; } 100% { transform: scale(1); opacity: 0.8; } }
+
+.fade-in { animation: fadeIn 0.8s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #010409; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #58a6ff; }
+
+/* Core Styling & Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;500;700;800&display=swap');
+
+html {
+    scroll-behavior: smooth; 
+    scroll-padding-top: 80px;
+}
+
+body {
+    background-color: #0d1117;
+    font-family: 'Outfit', sans-serif;
+    color: #e6edf3;
+    overflow-x: hidden;
+}
+
+#particles-js {
+    position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1;
+}
+
+/* Common Background Fades */
+.bg-dark-fade { background: rgba(13, 17, 23, 0.95); }
+.bg-black-fade { background: rgba(0, 0, 0, 0.95); }
+
+/* MASSIVE GLASS NAVBAR */
+.glass-nav {
+    background: rgba(13, 17, 23, 0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.8);
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #58a6ff !important;
+}
+
+.nav-link { font-weight: 500; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
+.nav-link.active {
+    border-bottom: 2px solid #58a6ff;
+    color: #58a6ff !important;
+}
+
+/* --- NEW GRADIENT TITLE COLORS --- */
+.gradient-heading {
+    /* Premium Cyan to Emerald Green Gradient */
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 201, 255, 0.3);
+    font-weight: 800;
+}
+
+/* HOME & WORKSPACE */
+.hero-section {
+    min-height: 100vh;
+    padding-top: 100px; 
+}
+
+.hero-btn { transition: 0.4s; background: linear-gradient(90deg, #00C9FF 0%, #0072ff 100%); border: none; }
+.hero-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0, 201, 255, 0.4) !important; color: white; }
+
+.main-workspace { padding-bottom: 100px; }
+
+/* IDE Container */
+.editor-container {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+    background: #161b22;
+}
+.editor-header {
+    background: #010409;
+    border-bottom: 1px solid #30363d;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+}
+.execute-btn {
+    background: linear-gradient(90deg, #238636, #2ea043);
+    border: none;
+    transition: 0.3s;
+}
+.execute-btn:hover {
+    transform: scale(1.05); box-shadow: 0 0 15px rgba(46, 160, 67, 0.6);
+}
+
+/* Terminal */
+.terminal-container {
+    border-radius: 12px; overflow: hidden; border: 1px solid #30363d; background: #010409;
+}
+.terminal-header { background: #161b22; border-bottom: 1px solid #30363d; font-family: 'Fira Code'; }
+#terminalOutput {
+    height: 150px; overflow-y: auto; font-family: 'Fira Code', monospace; font-size: 13px; color: #3fb950;
+}
+
+/* DETAILED ANALYTICS GRID */
+.glass-panel {
+    background: rgba(22, 27, 34, 0.5);
+    border-radius: 20px; border: 1px dashed #30363d;
+}
+.glass-card {
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px); border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: 0.4s ease;
+}
+
+.vm-detailed-card { border-top: 5px solid #0dcaf0; }
+.docker-detailed-card { border-top: 5px solid #2ecc71; border-color: rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1) rgba(46, 204, 113, 0.8) !important; border-width: 5px 1px 1px 1px !important;}
+.docker-detailed-card h4, .docker-detailed-card strong { text-shadow: 0 0 10px rgba(46, 204, 113, 0.8); }
+
+.glass-card:hover { transform: translateY(-8px); border-color: #58a6ff !important; }
+
+/* --- NEW ABOUT CARDS --- */
+.guide-card { border-top: 4px solid #ffc107 !important; }
+.guide-card:hover { border-color: #ffc107 !important; box-shadow: 0 15px 30px rgba(255, 193, 7, 0.2); }
+
+.team-card { border-top: 4px solid #58a6ff !important; }
+.team-card:hover { border-color: #58a6ff !important; box-shadow: 0 15px 30px rgba(88, 166, 255, 0.2); }
+
+.metric-list li { border-bottom: 1px solid rgba(255,255,255,0.03) !important; }
+.metric-list strong { font-size: 1.1rem; }
+
+/* Charts */
+.chart-card { min-height: 250px; }
+
+/* Winner Alert Preserved */
+.custom-alert {
+    background: linear-gradient(135deg, rgba(35, 134, 54, 0.2), rgba(13, 17, 23, 0.9));
+    border: 1px solid #2ea043 !important; border-radius: 15px;
+}
+
+/* 3D FLIPCARDS SECTION */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 280px; 
+    perspective: 1000px;
+    border-radius: 15px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card:hover .flip-card-inner {
+    border: 2px solid rgba(88, 166, 255, 0.8);
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.6);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.flip-card-front {
+    background: #161b22;
+    color: #e6edf3;
+}
+.flip-card-back {
+    background: #0d1117;
+    color: #e6edf3;
+    transform: rotateY(180deg);
+}
+.flip-card h4 { font-weight: 700; text-shadow: 0 0 10px rgba(88, 166, 255, 0.6); }
+
+/* MISC ANIMATIONS */
+.pulse-anim { animation: pulse 2s infinite; color: #58a6ff !important;}
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 20px #58a6ff; } 100% { transform: scale(1); opacity: 0.8; } }
+
+.fade-in { animation: fadeIn 0.8s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #010409; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #58a6ff; }

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5" style="padding-top: 120px !important;">
+    <div class="container" data-aos="fade-right">
+        <div class="section-header text-center mb-5">
+            <h2 class="fw-bold text-light"><i class="fas fa-code text-info"></i> Multi-Language Cloud IDE</h2>
+            <p class="text-secondary mx-auto" style="max-width: 600px;">Select your preferred language. Compile, execute, and see terminal outputs before analyzing platform performance.</p>
+        </div>
+        
+      <div class="row mb-3 justify-content-between align-items-end">
+    <div class="col-md-4">
+        <label class="text-info fw-bold mb-1"><i class="fas fa-cogs"></i> Choose Compiler</label>
+        <select id="langSelect" class="form-select bg-dark text-light border-secondary shadow-lg" onchange="changeLanguage()">
+            <option value="python" selected>Python 3</option>
+            <option value="java">Java (JDK)</option>
+            <option value="c">C (GCC)</option>
+        </select>
+    </div>
+    <div class="col-md-4 mt-3 mt-md-0">
+        <label class="text-danger fw-bold mb-1"><i class="fas fa-users"></i> Concurrency Load</label>
+        <select id="concurrencySelect" class="form-select bg-dark text-light border-danger shadow-lg">
+            <option value="1" selected>Single User Request</option>
+            <option value="10">10 Concurrent Users (Medium Load)</option>
+            <option value="100">100 Concurrent Users (Stress Test)</option>
+        </select>
+    </div>
+</div>
+
+        <div class="editor-container shadow-lg">
+            <div class="editor-header d-flex justify-content-between align-items-center px-3 py-2">
+                <span id="fileName"><i class="fab fa-python text-warning"></i> main.py</span>
+                <button class="btn btn-sm btn-success execute-btn fw-bold rounded-pill" onclick="executeCode()">
+                    <i class="fas fa-play"></i> Run Workload
+                </button>
+            </div>
+            <div id="monacoEditor" style="height: 380px;"></div>
+        </div>
+
+        <div class="terminal-container mt-4 shadow-lg">
+            <div class="terminal-header px-3 py-2"><i class="fas fa-terminal text-info"></i> Console Output</div>
+            <pre id="terminalOutput" class="p-3 m-0 text-success">Awaiting execution... Select language and click Run.</pre>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}

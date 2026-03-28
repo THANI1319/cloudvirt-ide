@@ -1,0 +1,92 @@
+    {% extends 'base.html' %}
+{% block content %}
+<section class="py-5" style="padding-top: 120px !important;">
+    <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-down">
+            <h2 class="fw-bold text-light"><i class="fas fa-info-circle text-info"></i> About CloudVirt Nexus</h2>
+            <p class="text-muted">Batch No: 20 | Department of Information Technology</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="glass-card p-4 h-100" style="border-top: 4px solid #58a6ff !important;">
+                    <h4 class="text-info fw-bold mb-3"><i class="fas fa-project-diagram"></i> Project Overview</h4>
+                    <p class="text-light" style="line-height: 1.8; font-size: 1.05rem;">
+                        <strong>CloudVirt Nexus</strong> is an advanced simulation and analytics platform built to demonstrate the performance differences between <strong>Hardware-level Virtualization (Virtual Machines)</strong> and <strong>OS-level Virtualization (Docker Containers)</strong>. 
+                        <br><br>
+                        Our primary objective is to help cloud developers and students dynamically analyze workload execution times, memory footprints, and CPU overheads before deploying applications to real-world cloud environments.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="glass-card p-4 h-100" style="border-top: 4px solid #2ea043 !important;">
+                    <h4 class="text-success fw-bold mb-3"><i class="fas fa-bullseye"></i> Simulation Accuracy Engine</h4>
+                    <p class="text-light mb-4" style="line-height: 1.6;">
+                        How accurate are our metrics? The platform uses Python's <code>psutil</code> library to capture <strong>Real-time System Metrics</strong> during the IDE code execution, combined with scientifically proven baseline constants.
+                    </p>
+                    <ul class="list-unstyled text-light mb-0">
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fas fa-microchip text-warning mt-1 me-3"></i> 
+                            <div><strong>Live Execution Baseline:</strong> Captures exact CPU cycles and RAM used by the pure Python process.</div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fas fa-server text-info mt-1 me-3"></i> 
+                            <div><strong>VM Emulation:</strong> Injects +2.8s Boot Time, +120MB RAM, and +18% CPU to simulate Hypervisor & Guest OS weight.</div>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <i class="fab fa-docker text-success mt-1 me-3"></i> 
+                            <div><strong>Docker Emulation:</strong> Injects minimal overhead (+0.1s Boot, +12MB RAM) to reflect kernel sharing efficiency.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-secondary mb-5 opacity-50">
+
+        <div class="text-center mb-5" data-aos="fade-down">
+            <h2 class="fw-bold text-light"><i class="fas fa-users text-warning"></i> Project Team & Guide</h2>
+            <p class="text-muted">Dedicated minds behind this Cloud Virtualization Study</p>
+        </div>
+
+        <div class="row justify-content-center mb-5" data-aos="zoom-in">
+            <div class="col-md-6 col-lg-5">
+                <div class="glass-card p-4 text-center guide-card">
+                    <i class="fas fa-chalkboard-teacher fa-4x text-warning mb-3"></i>
+                    <h4 class="fw-bold text-light mb-1">Mrs. D. Chithra</h4>
+                    <h6 class="text-warning fw-bold">Project Supervisor / Guide</h6>
+                    <p class="text-muted small mb-0 mt-2">Assistant Professor, IT Department</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center" data-aos="fade-up">
+            <div class="col-md-4">
+                <div class="glass-card p-4 text-center team-card h-100">
+                    <i class="fas fa-user-graduate fa-3x text-info mb-3"></i>
+                    <h5 class="fw-bold text-light mb-1">M. Praveen Raj</h5>
+                    <p class="text-info small mb-0 fw-bold">Team Member</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4 text-center team-card h-100">
+                    <i class="fas fa-user-graduate fa-3x text-info mb-3"></i>
+                    <h5 class="fw-bold text-light mb-1">Priyam Kumar Mishra</h5>
+                    <p class="text-info small mb-0 fw-bold">Team Member</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4 text-center team-card h-100">
+                    <i class="fas fa-user-graduate fa-3x text-info mb-3"></i>
+                    <h5 class="fw-bold text-light mb-1">V. Thanigaivel</h5>
+                    <p class="text-info small mb-0 fw-bold">Team Member</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
