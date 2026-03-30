@@ -14,7 +14,10 @@ CORS(app)
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-# CLOUD DATABASE URL
+# Pazhaya error code:
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://neondb_owner:.../neondb?sslmode=require&channel_binding=require'
+
+# Puthu Correct Code (Idha apdiye copy panni podunga):
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://neondb_owner:npg_D5W3ivsJOUjb@ep-damp-cake-a1u58fta-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
